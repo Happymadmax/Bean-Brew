@@ -1,27 +1,45 @@
-
-
-<div class="bg-white pb-16">
-    <div class="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-3 lg:max-w-7xl lg:px-8">
-        <h2 class="sr-only"></h2>
-
-        <div class="grid grid-cols-1 gap-x-6 gap-y-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">
-            @foreach($this->products as $product)
-                <a href="{{ route('product', $product) }}" class="group relative">
-                    <div class="pb-20">
-                        <div class="ml-[5px] aspect-h-1 aspect-w-1 w-full overflow-hidden xl:aspect-h-8 xl:aspect-w-7 max-w-[275px] border-r-2 border-b-2 rounded-br-lg border-black group-hover:border-blue-400">
-                            <img src="https://placehold.co/273x273" alt="Alex Albon" class="object-cover object-center w-full h-auto relative z-0 rounded-lg transition-all duration-300 group-hover:scale-110">
-                        </div>
-                        <div class="grid grid-cols-5 max-h-[70px] max-w-[275px] absolute top-[273.5px] border-l-2 border-t-2 border-black group-hover:border-blue-400 rounded-tl-lg">
-                            <div class="col-span-3">
-                                <h3 class="pt-4 pl-2 text-sm group-hover:text-lg group-hover:font-medium text-gray-900 group-hover:text-blue-400 duration-300 ease-in-out">{{$product->name}}</h3>
-                                <p class="mt-1 pl-2 text-lg font-medium group-hover:text-sm group-hover:font-normal text-gray-900 group-hover:text-blue-400 duration-300 ease-in-out">{{$product->price}}</p>
+<x-slot:photo>
+    <div class="grid h-screen object-center overflow-hidden content-center ">
+        <img src="https://wallpapers.com/images/hd/coffee-beans-with-leaves-xjack9rx9v60yf8l.jpg" class="w-screen">
+    </div>
+    <div class="absolute inset-0">
+        <h3 id="bean-brew" class="pr-8 absolute text-white text-8xl z-50 bottom-[250px] left-[90px] border-r-[6px] border-white">
+            Bean <br> & <br> Brew
+        </h3>
+    </div>
+    <style>
+        #bean-brew { position: absolute; opacity: 1; transition: opacity 1.5s ease; }
+    </style>
+    <script>
+        window.addEventListener('scroll', () => {
+            const el = document.getElementById('bean-brew');
+            const { top, bottom } = el.getBoundingClientRect();
+            el.style.opacity = (top < 0 || bottom > window.innerHeight) ? 0 : 1;
+        });
+    </script>
+</x-slot:photo>
+<div class="h-screen">
+    <div class="grid grid-cols-3 gap-6">
+        @foreach($this->products as $product)
+            <a href="{{ route('product', $product) }}"
+               class="">
+                <div class="p-4">
+                    <img src="https://placehold.co/600x400"
+                         class="rounded-t-lg"/>
+                    <div class="bg-gray-400
+                    border-t-[3px]  border-gray-500 rounded-b-lg">
+                        <div class="flex items-center justify-between
+                            p-2
+                            text-white">
+                            <div class="">
+                                <div class="text-lg font-medium">{{ $product->name }}</div>
+                                <div class="text-xs text-gray-200">{{ $product->price }}</div>
                             </div>
+                            <div></div>
                         </div>
                     </div>
-                </a>
-            @endforeach
-
-            <!-- More products... -->
-        </div>
+                </div>
+            </a>
+        @endforeach
     </div>
 </div>

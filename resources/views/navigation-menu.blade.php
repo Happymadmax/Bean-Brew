@@ -12,14 +12,14 @@
                         <a href="/" class=" {{ request()->is('/')? 'bg-black text-white': 'text-white hover:bg-gray-700 hover:text-gray-200'}} rounded-md px-3 py-2 my-2 text-sm font-medium" aria-current="page">Home</a>
                         <a href="/menu" class="{{ request()->is('products')? 'bg-black text-white': 'text-white hover:bg-gray-700 hover:text-gray-200'}} rounded-md px-3 py-2 my-2 text-sm font-medium">Menu</a>
                         <a href="/bookings" class="{{ request()->is('bookings')? 'bg-black text-white': 'text-white hover:bg-gray-700 hover:text-gray-200'}} rounded-md px-3 py-2 my-2 text-sm font-medium">Book</a>
-                        <a href="/cart" class="{{ request()->is('cart')? 'bg-black text-white': 'text-white hover:bg-gray-700 hover:text-gray-200'}} rounded-md px-3 py-2 my-2 text-sm font-medium">Cart</a>
+                        @livewire('navigation-cart')
                         <a href="/about" class="{{ request()->is('about')? 'bg-black text-white': 'text-white hover:bg-gray-700 hover:text-gray-200'}} rounded-md px-3 py-2 my-2 text-sm font-medium">About</a>
                     </div>
                 </div>
             </div>
             <div class="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
                 @auth
-                    <span class="block text-white px-3 py-2 text-base font-medium">Logged in as {{ Auth::user()->firstname }}</span>
+                    <span class="block text-white px-3 py-2 text-base font-medium">{{ Auth::user()->name }}</span>
 
                     <!-- Logout Form -->
                     <form method="POST" action="/logout">
@@ -29,6 +29,7 @@
                     </form>
                 @else
                     <a href="/login" class="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Login</a>
+                    <a href="/register" class="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Register</a>
                 @endauth
             </div>
         </div>
