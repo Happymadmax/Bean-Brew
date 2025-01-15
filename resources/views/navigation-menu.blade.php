@@ -1,5 +1,5 @@
 
-<nav class="bg-gray-800 sticky top-0 z-40 shadow-xl">
+<nav class="bg-dark-brown sticky top-0 z-40 shadow-md border-b-2 border-warm-brown">
     <div class="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
         <div class="flex h-20 items-center justify-between">
             <div class="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
@@ -8,12 +8,11 @@
                 </div>
                 <div class="hidden sm:ml-6 sm:block">
                     <div class="flex space-x-4">
-                        <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
-                        <a href="/" class=" {{ request()->is('/')? 'bg-black text-white': 'text-white hover:bg-gray-700 hover:text-gray-200'}} rounded-md px-3 py-2 my-2 text-sm font-medium" aria-current="page">Home</a>
-                        <a href="/menu" class="{{ request()->is('products')? 'bg-black text-white': 'text-white hover:bg-gray-700 hover:text-gray-200'}} rounded-md px-3 py-2 my-2 text-sm font-medium">Menu</a>
-                        <a href="/bookings" class="{{ request()->is('bookings')? 'bg-black text-white': 'text-white hover:bg-gray-700 hover:text-gray-200'}} rounded-md px-3 py-2 my-2 text-sm font-medium">Book</a>
+                        <a href="/" class=" {{ request()->is('/')? 'bg-warm-brown text-white': ' text-white hover:bg-warm-brown hover:text-gray-200'}} rounded-md px-3 py-2 my-2 text-sm font-medium" aria-current="page">Home</a>
+                        <a href="/menu" class="{{ request()->is('menu')? 'bg-warm-brown text-white': ' text-white hover:bg-warm-brown hover:text-gray-200'}} rounded-md px-3 py-2 my-2 text-sm font-medium">Menu</a>
+                        <a href="/bookings" class="{{ request()->is('bookings')? 'bg-warm-brown text-white': ' text-white hover:bg-warm-brown hover:text-gray-200'}} rounded-md px-3 py-2 my-2 text-sm font-medium">Book</a>
                         @livewire('navigation-cart')
-                        <a href="/about" class="{{ request()->is('about')? 'bg-black text-white': 'text-white hover:bg-gray-700 hover:text-gray-200'}} rounded-md px-3 py-2 my-2 text-sm font-medium">About</a>
+                        <a href="/about" class="{{ request()->is('about')? 'bg-warm-brown text-white': ' text-white hover:bg-warm-brown hover:text-gray-200'}} rounded-md px-3 py-2 my-2 text-sm font-medium">About</a>
                     </div>
                 </div>
             </div>
@@ -28,8 +27,10 @@
                         </button>
                     </form>
                 @else
-                    <a href="/login" class="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Login</a>
-                    <a href="/register" class="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Register</a>
+                <div class="">
+                    <a href="/login" class="{{ request()->is('login')? 'bg-warm-brown text-white': ' text-white hover:bg-warm-brown hover:text-gray-200'}} rounded-md px-3 py-2 my-2 text-sm font-medium">Login</a>
+                    <a href="/register" class="{{ request()->is('register')? 'bg-warm-brown text-white': ' text-white hover:bg-warm-brown hover:text-gray-200'}} rounded-md px-3 py-2 my-2 text-sm font-medium">Register</a>
+                </div>
                 @endauth
             </div>
         </div>

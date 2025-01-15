@@ -1,30 +1,33 @@
 <div class="bg-white">
     <div class="pt-6">
-        <!-- Image gallery -->
-        <div class="mx-auto mt-6 max-w-2xl sm:px-6 lg:grid lg:max-w-7xl lg:grid-cols-3 lg:gap-x-8 lg:px-8">
-            <img src="https://placehold.co/600x400" alt="Two each of gray, white, and black shirts laying flat." class="hidden aspect-[3/4] size-full rounded-lg object-cover lg:block">
-            <div class="hidden lg:grid lg:grid-cols-1 lg:gap-y-8">
-                <img src="https://placehold.co/600x400" alt="Model wearing plain black basic tee." class="aspect-[3/2] size-full rounded-lg object-cover">
-                <img src="https://placehold.co/600x400" alt="Model wearing plain gray basic tee." class="aspect-[3/2] size-full rounded-lg object-cover">
-            </div>
-            <img src="https://placehold.co/600x400" alt="Model wearing plain white basic tee." class="aspect-[4/5] size-full object-cover sm:rounded-lg lg:aspect-[3/4]">
-        </div>
 
         <!-- Product info -->
         <div class="mx-auto max-w-2xl px-4 pb-16 pt-10 sm:px-6 lg:grid lg:max-w-7xl lg:grid-cols-3 lg:grid-rows-[auto,auto,1fr] lg:gap-x-8 lg:px-8 lg:pb-24 lg:pt-16">
-            <div class="lg:col-span-2 lg:border-r lg:border-gray-200 lg:pr-8">
+            <div class="lg:col-span-2 lg:border-r lg:border-dark-brown lg:pr-8">
                 <h1 class="text-2xl font-bold tracking-tight text-gray-900 sm:text-3xl">{{ $this->product->name }}</h1>
             </div>
 
             <!-- Options -->
-            <div class="mt-4 lg:row-span-3 lg:mt-0">
+            <div class="mt-4 lg:row-span-3 lg:mt-0 ">
                 <h2 class="sr-only">Product information</h2>
-                <p class="text-3xl tracking-tight text-gray-900">{{ $this->product->price }}</p>
-
+                <div class="rounded-lg bg-warm-brown p-4 border border-dark-brown"
+                     x-data="{ isExpanded: false }">
+                    <h1 class="text-2xl font-bold tracking-tight text-white sm:text-3xl">{{ $this->product->name }}</h1>
+                    <p class="text-xl tracking-tight text-light-gray">{{ $this->product->price }}</p>
+                    <button class="flex items-center pt-2 text-sm text-light-brown"
+                            id="controlsAccordionItemOne" type="button" aria-controls="accordionItemOne" @click="isExpanded = ! isExpanded" :class="isExpanded ? 'text-onSurfaceStrong dark:text-onSurfaceDarkStrong font-bold'  : 'text-onSurface dark:text-onSurfaceDark font-medium'" :aria-expanded="isExpanded ? 'true' : 'false'" >
+                        Description
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke="currentColor" class="size-4 shrink-0 transition px-0.5" aria-hidden="true" :class="isExpanded  ?  'rotate-180'  :  ''">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5"/>
+                        </svg>
+                    </button>
+                    <p class="text-light-gray text-sm"
+                       x-cloak x-show="isExpanded" id="accordionItemOne" role="region" aria-labelledby="controlsAccordionItemOne">{{ $this->product->description }}</p>
+                </div>
                 <form class="mt-10">
 
                     <!-- Sizes -->
-                    <div class="mt-10">
+                    <div class="">
                         <div class="flex items-center justify-between">
                             <h3 class="text-sm font-medium text-gray-900">Size</h3>
                         </div>
